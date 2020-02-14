@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ListMovie from './components/ListMovie';
+import Title from './components/Title';
+import DetailMovie from './components/DetailMovie';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
+
+  const [current, setCurrent] = React.useState('');
+  const getCurrent = (id) => {
+    setCurrent(id);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Title title="Movie - React group" />
+              <div className="container">
+                <ListMovie getCurrent={getCurrent} />
+              </div>
+            </Route>
+            <Route path='/detail-movie'>
+                <DetailMovie current={current} />
+            </Route>
+        </Switch>
+   </Router>
   );
 }
 
