@@ -14,7 +14,7 @@ const DetailMovie = ({current}) => {
     }
     
     fetchApi()
-  }, [movie, current])
+  }, [current])
 
   return (
     <>
