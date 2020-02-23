@@ -29,3 +29,8 @@ a {
   width: 90%;
   margin: 0 auto;
 }
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+}

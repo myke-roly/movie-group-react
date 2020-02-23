@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../components/Title';
+import Title from '../containers/Title';
 
 const DetailMovie = ({current}) => {
   const [movie, setMovie] = React.useState([]);
