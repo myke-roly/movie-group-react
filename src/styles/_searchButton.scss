@@ -1,0 +1,69 @@
+.search {
+  margin: 2rem 0;
+  height: 40px;
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  &:hover {
+    opacity: .9;
+  }
+  
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+  
+  &__button {
+    height: 100%;
+    z-index: 10;
+    
+    i {
+      background: $dark-color;
+      color: $default-color;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      padding-top: 1rem;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: -5px 5px 5px rgba(0, 0, 0 , .4); 
+    }
+  }
+  
+  &__input {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    border-bottom: 2px solid $default-color;
+    animation: showSearh 1.1s ease;
+
+    @keyframes showSearh {
+      from { width: 0px;}
+      to {width: 100%;}
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: $dark-color;
+      font-family: Tahoma;
+      font-size: .9rem;
+      font-weight: bold;
+      padding-left: 1rem;
+      outline: none;
+      text-transform: uppercase;
+    }
+  }
+
+  &__input--show {
+    display: block;
+  }
+}
+
+
+
