@@ -1,0 +1,16 @@
+.pagination {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: end;
+
+  &__button {
+    background: $dark-color;
+    color: $default-color;
+    margin-left: 1rem;
+    
+    &:hover {
+      background: $default-color;
+      color: $light-color;
+    }
+  }
+}

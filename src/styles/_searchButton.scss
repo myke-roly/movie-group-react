@@ -15,20 +15,21 @@
     width: 100%;
   }
   
-  &__button {
-    height: 100%;
-    z-index: 10;
-    
+  &__button{
+    background: $dark-color;
+        
     i {
-      background: $dark-color;
+      width: inherit;
+      height: inherit;
+      padding-top: .95rem;
       color: $default-color;
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      padding-top: 1rem;
+      transition: transform .5s ease-out;
+      font-size: 1.05rem;
       border-radius: 50%;
-      cursor: pointer;
-      box-shadow: -5px 5px 5px rgba(0, 0, 0 , .4); 
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   
@@ -64,6 +65,16 @@
     display: block;
   }
 }
+
+/*** Global buttons */
+.btn {
+  height: 45px;
+  width: 45px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: -5px 5px 5px rgba(0, 0, 0 , .4);
+} 
 
 
 
