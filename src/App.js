@@ -9,6 +9,7 @@ import NotFound from './containers/NotFound';
 import MoviesContext from './context/MoviesContext';
 import CategoriesContext from './context/CategoriesContext';
 import Header from './containers/Header';
+import SearchContext from './context/SearchContext';
 
 const App = () => {
   const [current, setCurrent] = React.useState('');
@@ -19,26 +20,29 @@ const App = () => {
   return (
     <MoviesContext>
       <CategoriesContext>
-        <Router>
-          <Switch>
-            <Route path="/" exact>
-              <div className="content">
-                <Container>
-                  <Header />
-                  <ListMovie getCurrent={getCurrent} />
-                </Container>
-                <Sidebar />
-              </div>
-            </Route>
-            
-            <Route path="/detail-movie">
-              <DetailMovie current={current} />
-            </Route>
-            <Route path="/404">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Router>
+        <SearchContext>
+          <Router>
+            <Switch>
+              <Route path="/" exact>
+                {/* <div className="content"> */}
+                  <Container>
+                    <Header getCurrent={getCurrent} />
+                    <hr />
+                    <ListMovie getCurrent={getCurrent} />
+                  </Container>
+                  {/* <Sidebar /> */}
+                {/* </div> */}
+              </Route>
+              
+              <Route path="/detail-movie">
+                <DetailMovie current={current} />
+              </Route>
+              <Route path="/404">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Router>
+        </SearchContext>
       </CategoriesContext>
     </MoviesContext>
   );

@@ -2,10 +2,10 @@ import React from 'react';
 import Search from '../components/Search';
 import Pagination from '../containers/Pagination';
 
-const Header = () => {
+const Header = ({getCurrent}) => {
   return (
     <header className="header">
-      <Search />
+      <Search getCurrent={getCurrent} />
       <Pagination />
     </header>
   );

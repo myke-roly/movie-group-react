@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { createBrowserHistory } from 'history';
-import Pagination from '../containers/Pagination';
+import { ContextSearch } from '../context/SearchContext';
+import Movie from './Movie';
+import { queryAllByAltText } from '@testing-library/react';
 
-const Search = () => {
+const Search = ({ getCurrent }) => {
   const [input, setInput] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const refInput = useRef();
@@ -10,28 +12,32 @@ const Search = () => {
 
   const { push } = createBrowserHistory();
 
+  /** search movie  */
+  const contextSearch = useContext(ContextSearch);
+  const { movie, getQuery, query } = contextSearch;
+
+  /** hidden from if not focused */
   useEffect(() => {
     document.addEventListener('mousedown', handleClick);
-
     return () => document.removeEventListener('mousedow', handleClick);
   }, []);
 
   const handleClick = e => {
     if (node.current) {
       if (node.current.contains(e.target)) return;
-
       setShowSearch(false);
     }
   };
 
   const searchMovie = e => {
     e.preventDefault();
-    push(input);
+    // push(input);
     setInput('');
   };
 
   const clickButton = () => {
     setShowSearch(true);
+    getQuery(input);
     setTimeout(() => {
       refInput.current.focus();
     }, 500);
@@ -57,6 +63,24 @@ const Search = () => {
           />
         </section>
       </form>
+      {!query || !showSearch ? '' : (
+        <div className="modal" ref={node}>
+          <div className="modal__movies">
+          Elementos encontrados de: {query.toLowerCase()}
+            <section className="wrapper-movies">
+              {movie.map(mov => (
+                <Movie
+                  key={mov.id}
+                  id={mov.id}
+                  title={mov.title}
+                  url={mov.poster_path}
+                  getCurrent={getCurrent}
+                />
+              ))}
+            </section>
+          </div>
+        </div>
+      )}
     </>
   );
 };
