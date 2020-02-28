@@ -3,20 +3,26 @@ import {ContextMovies} from '../context/MoviesContext';
 
 const Pagination = () => {
   const contextMovies = React.useContext(ContextMovies);
-  const { prevPage, nextPage } = contextMovies;
+  const { prevPage, nextPage, page } = contextMovies;
+
+  console.log(page);
 
   return (
     <div className="pagination">
-      <button 
-        className="btn pagination__button pagination__toLeft"
-        onClick={prevPage}
-      >
-        <i className="fas fa-arrow-left"></i>
-      </button>
+
+      {page > 1 ?
+        <button 
+          className="btn pagination__button pagination__toLeft"
+          onClick={prevPage}
+        >
+          <i className="fas fa-arrow-left"></i>
+           &ensp;Prev
+        </button>
+        : null}
       <button 
         className="btn pagination__button pagination__toLeft"
         onClick={nextPage}
-      >
+      >Next&ensp;
         <i className="fas fa-arrow-right"></i>
       </button>
     </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Title from '../containers/Title';
 
 const DetailMovie = ({current}) => {
   const [movie, setMovie] = React.useState([]);
@@ -16,9 +15,9 @@ const DetailMovie = ({current}) => {
     fetchApi()
   }, [current])
 
+  console.log(movie.backdrop_path)
+
   return (
-    <>
-    <Title title={movie.title} />
     <div className="container">
       <section className="movie">
         <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} />
@@ -28,7 +27,6 @@ const DetailMovie = ({current}) => {
         </article>
       </section>
     </div>
-    </>
   )
 }
 

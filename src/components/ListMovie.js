@@ -1,18 +1,12 @@
 import React, { useContext } from 'react';
 import Movie from './Movie';
 import Loading from '../containers/Loading';
+import Container from '../containers/Container';
+import Pagination from '../containers/Pagination';
 
-//context
-import { ContextMovies } from '../context/MoviesContext';
-
-const ListMovie = ({ getCurrent }) => {
-
-  const contextMovies = useContext(ContextMovies);
-  const { movies, loading } = contextMovies;
-
+const ListMovie = ({ movies, getCurrent }) => {
   return (
-    <div>
-      {loading && <Loading />}
+    <Container>
       <div className="wrapper-movies">
         {movies.map(movie => (
           <Movie
@@ -24,7 +18,8 @@ const ListMovie = ({ getCurrent }) => {
           />
         ))}
       </div>
-    </div>
+      <Pagination />
+    </Container>
   );
 };
 

@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ContextSearch = createContext();
 const SearchContext = ({ children }) => {
   const [query, setQuery] = useState('');
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -12,7 +12,7 @@ const SearchContext = ({ children }) => {
       const data = await response.json();
       if(!data.lenght === 0) return;
   
-      setMovie(data.results);
+      setMovies(data.results);
     }
 
     fetchApi()
@@ -21,7 +21,7 @@ const SearchContext = ({ children }) => {
   return <ContextSearch.Provider value={{
     getQuery: (q) => setQuery(q),
     query: query,
-    movie: movie 
+    movies: movies 
   }}>
     {children}
   </ContextSearch.Provider>;

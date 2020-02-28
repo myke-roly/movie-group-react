@@ -1,7 +1,7 @@
 .search {
   margin: 2rem 0;
   height: 40px;
-  width: 35%;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -17,6 +17,9 @@
   
   &__button{
     background: $dark-color;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
         
     i {
       width: inherit;
@@ -34,12 +37,12 @@
   }
   
   &__input {
-    // display: none;
+    display: none;
     width: 100%;
     height: 100%;
     margin-left: 10px;
     border-bottom: 2px solid $default-color;
-    animation: showSearh 1.1s ease;
+    animation: showSearh .5s ease;
 
     @keyframes showSearh {
       from { width: 0px;}
@@ -63,18 +66,8 @@
 
   &__input--show {
     display: block;
+
   }
 }
-
-/*** Global buttons */
-.btn {
-  height: 45px;
-  width: 45px;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0 , .4);
-} 
-
 
 

@@ -30,7 +30,8 @@ const MoviesContext = props => {
       loading: loading,
       movies: movies,
       nextPage: nextPage,
-      prevPage: prevPage
+      prevPage: prevPage,
+      page: pagination
     }}>
       {props.children}
     </ContextMovies.Provider>

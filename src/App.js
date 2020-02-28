@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ListMovie from './components/ListMovie';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
+
+import Discover from './containers/Discover';
 import DetailMovie from './components/DetailMovie';
-import Container from './components/Container';
-import Sidebar from './components/Sidebar';
 import NotFound from './containers/NotFound';
+import SearchMovie from './components/SearchMovie';
 //Context
 import MoviesContext from './context/MoviesContext';
 import CategoriesContext from './context/CategoriesContext';
-import Header from './containers/Header';
 import SearchContext from './context/SearchContext';
 
 const App = () => {
@@ -18,33 +17,26 @@ const App = () => {
   };
 
   return (
-    <MoviesContext>
-      <CategoriesContext>
-        <SearchContext>
-          <Router>
-            <Switch>
+    <BrowserRouter>
+      <Switch>
+        <MoviesContext>
+          <CategoriesContext>
+            <SearchContext>
               <Route path="/" exact>
-                {/* <div className="content"> */}
-                  <Container>
-                    <Header getCurrent={getCurrent} />
-                    <hr />
-                    <ListMovie getCurrent={getCurrent} />
-                  </Container>
-                  {/* <Sidebar /> */}
-                {/* </div> */}
+                <Discover getCurrent={getCurrent} />
               </Route>
-              
-              <Route path="/detail-movie">
+              <Route path="/detail-movie/:id">
                 <DetailMovie current={current} />
               </Route>
-              <Route path="/404">
-                <NotFound />
+              <Route path="/search/:id">
+                <SearchMovie getCurrent={getCurrent} />
               </Route>
-            </Switch>
-          </Router>
-        </SearchContext>
-      </CategoriesContext>
-    </MoviesContext>
+              <Route path="/404" component={NotFound} />
+            </SearchContext>
+          </CategoriesContext>
+        </MoviesContext>
+      </Switch>
+    </BrowserRouter>
   );
 };
 
