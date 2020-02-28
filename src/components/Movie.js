@@ -8,7 +8,8 @@ const Movie = ({title, url, id, getCurrent}) => {
     <Link to={`/detail-movie/${id}`}>
       <section className="wrapper-movie" onClick={() => getCurrent(id)}>
         <img src={url ? `https://image.tmdb.org/t/p/original/${url}` : imgNotFound} alt={title} />
-        <h2>{title}</h2>
+        <h2>{title} </h2>
+        <i className="far fa-heart"></i>
       </section>
     </Link>
   )
