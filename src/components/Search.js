@@ -24,38 +24,33 @@ const Search = ({ history }) => {
       setShowSearch(false);
     }
   };
+  
+  React.useEffect(() => {
+    if(!showSearch) return;
+    refInput.current.focus()
+  }, [showSearch])
 
   const searchMovie = e => {
     e.preventDefault();
+    if(!input) return;
     getQuery(input);
     history.push(`/search/${input}`);
     setInput('');
   };
 
-  const clickButton = () => {
-    refInput.current.focus();
-    setShowSearch(true);
-  };
-
   return (
     <>
       <form className="search" onSubmit={searchMovie} ref={node}>
-        <button className="btn search__button" onClick={clickButton} type="button">
+        <button className="btn search__button" onClick={() => setShowSearch(true)}>
           <i className="fas fa-search"></i>
         </button>
-        <section
-          className={`search__input ${
-            showSearch ? 'search__input--show' : null
-          } `}
-        >
+        <section className={`${ !showSearch ? 'search__input' : 'search__input search__input--show' }`}>
           <input
             type="text"
             placeholder="Search Movie..."
             value={input}
             ref={refInput}
-            onChange={e => {
-              setInput(e.target.value);
-            }}
+            onChange={e => setInput(e.target.value)}
           />
         </section>
       </form>

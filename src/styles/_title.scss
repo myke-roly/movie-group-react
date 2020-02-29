@@ -1,9 +1,18 @@
+.title {
+  color: $dark-color;
+  
+  h1 {
+    text-transform: uppercase;
+    font-size: .8rem;
+    font-weight: bold;
+    opacity: .8;
+  }
 
-h1.title {
-  width: 100%;
-  padding: 2rem 0;
-  text-align: center;
-  background: #233;
-  color: #eee;
-  text-transform: uppercase;
+  h2 {
+    color: $dark-color;
+    // text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-top: .5rem;
+  }
 }

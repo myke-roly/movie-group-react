@@ -3,13 +3,11 @@ import React, { useContext } from 'react';
 import { ContextSearch } from '../context/SearchContext';
 import ListMovie from './ListMovie';
 
-const SearchMovie = ({ getCurrent }) => {
+const SearchMovie = () => {
   const contextSearch = useContext(ContextSearch);
   const { movies, query } = contextSearch;
 
-  return (
-    <>{!query ? '' : <ListMovie getCurrent={getCurrent} movies={movies} />}</>
-  );
+  return <ListMovie movies={movies} title="Search Movie" subtitle={query} />
 };
 
 export default SearchMovie;

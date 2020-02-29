@@ -7,6 +7,11 @@ const MoviesContext = props => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [pagination, setPagination] = useState(1);
+  const [current, setCurrent] = React.useState('');
+  const getCurrent = id => {
+    setCurrent(id);
+  };
+
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -29,9 +34,11 @@ const MoviesContext = props => {
     <ContextMovies.Provider value={{
       loading: loading,
       movies: movies,
+      page: pagination,
+      current: current,
       nextPage: nextPage,
       prevPage: prevPage,
-      page: pagination
+      getCurrent: getCurrent
     }}>
       {props.children}
     </ContextMovies.Provider>

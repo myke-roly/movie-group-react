@@ -1,5 +1,4 @@
 .search {
-  margin: 2rem 0;
   height: 40px;
   width: 300px;
   display: flex;
@@ -65,8 +64,7 @@
   }
 
   &__input--show {
-    display: block;
-
+    display: inline-block; 
   }
 }
 

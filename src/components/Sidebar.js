@@ -1,24 +1,27 @@
 import React, { useContext } from 'react';
 import { ContextCategories } from '../context/CategoriesContext';
-import {Link} from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import logo from '../utils/logo.svg';
 
 const Sidebar = () => {
-
-  const contextCategories = useContext(ContextCategories)
+  const contextCategories = useContext(ContextCategories);
   const { genres } = contextCategories;
 
   return (
     <aside className="sidebar">
-      <section>
-        <h1>Sidebar</h1>
+      <Link to="/"><img src={logo} alt="logo" /></Link>
+      <section className="sidebar__genres">
+        
         {genres.map(genre => (
-          <Link to={`/genre/${genre.name}`} key={genre.id}>
-            <h2>{genre.name}</h2>
-          </Link>
+          <Link to={`/genres/${genre.name}`} key={genre.id}>
+            <div className="sidebar__genres--item">
+              <small><i className="fab fa-ioxhost"></i>  {genre.name}</small>
+          </div>
+            </Link>
         ))}
       </section>
     </aside>
-  )
-}
+  );
+};
 
 export default Sidebar;

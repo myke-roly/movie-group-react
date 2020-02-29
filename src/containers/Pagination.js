@@ -5,8 +5,6 @@ const Pagination = () => {
   const contextMovies = React.useContext(ContextMovies);
   const { prevPage, nextPage, page } = contextMovies;
 
-  console.log(page);
-
   return (
     <div className="pagination">
 

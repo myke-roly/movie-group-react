@@ -1,10 +1,11 @@
 import React from 'react';
 import Search from '../components/Search';
-
-const Header = ({getCurrent}) => {
+import Title from './Title';
+const Header = ({title, subtitle}) => {
   return (
     <header className="header">
-      <Search getCurrent={getCurrent} />
+      <Search />
+      <Title title={title} subtitle={subtitle} />
     </header>
   );
 };

@@ -1,18 +1,22 @@
-.wrapper-movies {
-  padding: 2rem;
+.wrapper__movies {
+  margin: 2rem 0;
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 
-  .wrapper-movie {
+  &-item {
     width: 100%;
     border-radius: 10px;
     transition: all 0.3s ease-out;
     position: relative;
+
+    img {
+      max-height: 22rem;
+    }
   
     &:hover {
       background-color: $dark-color;
@@ -25,7 +29,7 @@
       }
 
       h2 {
-        color: $default-color;
+        color: $light-color;
       }
 
       i {
@@ -37,10 +41,11 @@
     
     h2 {
       color: $dark-color;
-      letter-spacing: .15rem;
+      letter-spacing: .12rem;
       text-align: center;
       font-size: .8rem;
-      padding: 1.5rem 1rem;
+      padding: .5rem;
+      padding-bottom: 1rem;
     }
 
     i {
