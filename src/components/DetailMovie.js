@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ContextMovies } from '../context/MoviesContext';
 import Container from '../containers/Container';
 
-const DetailMovie = () => {
+const DetailMovie = type => {
   const { current} = useContext(ContextMovies);
 
   const [movie, setMovie] = React.useState([]);
