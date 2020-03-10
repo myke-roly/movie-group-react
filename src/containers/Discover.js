@@ -1,12 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ListMovie from '../components/ListMovie';
 import { ContextMovies } from '../context/MoviesContext';
 
 const Discover = () => {
   const contextMovies = useContext(ContextMovies);
-  const { movies } = contextMovies;
+  const { movies, moviesDiscover, loading, error, page } = contextMovies;
 
-  return <ListMovie movies={movies} title="Discover Movies" />;
+  useEffect(() => {
+    moviesDiscover(page);
+  }, [page]);
+
+  return (
+    <ListMovie
+      movies={movies}
+      loading={loading}
+      error={error}
+      title="Discover Movies"
+    />
+  );
 };
 
 export default Discover;

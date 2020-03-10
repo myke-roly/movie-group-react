@@ -1,16 +1,11 @@
 import React from 'react';
+import image from '../utils/not-found.jpg';
+import { Link } from 'react-router-dom';
 
-const NotFound = () => {
+export default () => {
   return (
-    <>
-      <a href="/">
-        <img
-          src="https://doofindermedia.s3.amazonaws.com/blog/2019/08/29/110655-404-not-found-Doofinder.jpg"
-          alt="not-found"
-        />
-      </a>
-    </>
+    <Link to="/">
+      <img src={image} alt="not-found" />
+    </Link>
   );
 };
-
-export default NotFound;

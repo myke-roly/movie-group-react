@@ -1,0 +1,8 @@
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const SHOW_ERROR = 'SHOW_ERROR'; 
+export const SHOW_LIST_MOVIES = 'SHOW_LIST';
+export const SHOW_GENRES_MOVIES = 'SHOW_GENRES_MOVIES';
+export const SHOW_SEARCH_MOVIE = 'SHOW_SEARCH_MOVIE';
+
+export const SHOW_NEXT_PAGE = 'SHOW_NEXT_PAGE';
+export const SHOW_PREV_PAGE = 'SHOW_PREV_PAGE';

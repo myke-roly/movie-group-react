@@ -14,6 +14,14 @@ const Movie = ({ title, url, id }) => {
           alt={title}
         />
         <h2>{title} </h2>
+        <section className="stars">
+          <i className="far fa-star"></i>
+          <i className="far fa-star"></i>
+          <i className="far fa-star"></i>
+          <i className="far fa-star"></i>
+          <i className="far fa-star"></i>
+        </section>
+
         <i className="far fa-heart"></i>
       </section>
     </Link>

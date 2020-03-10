@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import logo from '../utils/logo.svg';
 
 import { ContextCategories } from '../context/CategoriesContext';
-import { ContextGenres } from '../context/GenresContext';
+// import { ContextGenres } from '../context/GenresContext';
+import { ContextMovies } from '../context/MoviesContext';
 
 const Sidebar = () => {
   const contextCategories = useContext(ContextCategories);
-  const contextGenres = useContext(ContextGenres);
+  const contextGenres = useContext(ContextMovies);
 
   const { genres } = contextCategories;
   const { getGenre } = contextGenres;

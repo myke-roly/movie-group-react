@@ -1,13 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
-import { ContextSearch } from '../context/SearchContext';
+// import { ContextSearch } from '../context/SearchContext';
+import { ContextMovies } from '../context/MoviesContext';
 import ListMovie from './ListMovie';
 
 const SearchMovie = () => {
-  const contextSearch = useContext(ContextSearch);
-  const { movies, query } = contextSearch;
+  const contextSearch = useContext(ContextMovies);
+  const { searchMovies, movies, loading, error, query, page } = contextSearch;
 
-  return <ListMovie movies={movies} title="Search Movie" subtitle={query} />
+  useEffect(() => {
+    searchMovies(query, page);
+  }, [query, page]);
+
+  return (
+    <ListMovie
+      movies={movies}
+      loading={loading}
+      error={error}
+      title="Search Movie"
+      subtitle={query}
+    />
+  );
 };
 
 export default SearchMovie;

@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ListMovie from './ListMovie';
-import { ContextGenres } from '../context/GenresContext';
-import { useContext } from 'react';
-import {ContextCategories} from '../context/CategoriesContext';
+// import { ContextGenres } from '../context/GenresContext';
+import { ContextMovies } from '../context/MoviesContext';
+import { ContextCategories } from '../context/CategoriesContext';
 
 const Genres = () => {
-  const contextGenres = useContext(ContextGenres);
+  const contextMovies = useContext(ContextMovies);
   const contextCategories = useContext(ContextCategories);
-  
-  const { genresMovies, genre} = contextGenres;
+
+  const { moviesGenres, genre, loading, error, movies, page } = contextMovies;
   const { genres } = contextCategories;
 
-  let subtitle = genres.find(g => g.id === genre)
+  useEffect(() => {
+    moviesGenres(genre, page);
+  }, [genre, page]);
+
+  let subtitle = genres.find(g => g.id === genre);
 
   return (
-      <ListMovie movies={genresMovies} title="Genres" subtitle={genre ? subtitle.name : '' } />
+    <ListMovie
+      movies={movies}
+      loading={loading}
+      error={error}
+      title="Genres"
+      subtitle={genre ? subtitle.name : ''}
+    />
   );
 };
 

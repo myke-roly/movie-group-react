@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContextMovies} from '../context/MoviesContext';
+import { ContextMovies } from '../context/MoviesContext';
 
 const Pagination = () => {
   const contextMovies = React.useContext(ContextMovies);
@@ -7,20 +7,20 @@ const Pagination = () => {
 
   return (
     <div className="pagination">
-
-      {page > 1 ?
-        <button 
+      {page > 1 ? (
+        <button
           className="btn pagination__button pagination__toLeft"
           onClick={prevPage}
         >
           <i className="fas fa-arrow-left"></i>
-           &ensp;Prev
+          &ensp;Prev
         </button>
-        : null}
-      <button 
+      ) : null}
+      <button
         className="btn pagination__button pagination__toLeft"
         onClick={nextPage}
-      >Next&ensp;
+      >
+        Next&ensp;
         <i className="fas fa-arrow-right"></i>
       </button>
     </div>
