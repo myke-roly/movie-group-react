@@ -47,9 +47,11 @@ const DetailMovie = ({ match }) => {
             <h3>The Genres</h3>
             <ul>
               {movie.genres ? movie.genres.map(genre => (
-               <Link to={`/genres/${genre.id}`}>
-                 <li key={genre.id}><i className="fas fa-genderless"></i> {genre.name}</li>
-               </Link>
+                 <li key={genre.id}>
+                   <Link to={`/genres/${genre.id}`}>
+                    <i className="fas fa-genderless"></i> {genre.name}
+                   </Link>
+                </li>
               )) : ''}
             </ul>
           </div>
@@ -64,9 +66,9 @@ const DetailMovie = ({ match }) => {
           </section>
           
           <section className="movie__right--btns">
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="btn btn-imdb">imdb <i className="fab fa-imdb"></i></a>
-            <a href={movie.homepage} target="_blank" rel="noopener noreferrer" className="btn btn-homepage">web site <i className="fas fa-link"></i></a>
             <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="btn btn-trailer">Trailer <i className="fab fa-youtube"></i></a>
+            <a href={movie.homepage} target="_blank" rel="noopener noreferrer" className="btn btn-homepage">web site <i className="fas fa-link"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="btn btn-imdb">imdb <i className="fab fa-imdb"></i></a>
           </section>
         </article>
       </section>

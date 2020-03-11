@@ -22,7 +22,7 @@ const Genres = ({match}) => {
       movies={movies}
       loading={loading}
       error={error}
-      title="Genres"
+      title="Genres Movies"
       subtitle={genre ? genre.name : ''}
     />
   );
