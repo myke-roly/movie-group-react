@@ -1,23 +1,18 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { ContextMovies } from '../context/MoviesContext';
 
 const Search = ({history}) => {
+
   const [input, setInput] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const refInput = useRef();
   const node = useRef();
-
-  /** search movie  */
-  const contextSearch = useContext(ContextMovies);
-  const {  getQuery } = contextSearch;
 
   /** hidden from if not focused */
   useEffect(() => {
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedow', handleClick);
   }, []);
-
 
   const handleClick = e => {
     if (node.current) {
@@ -26,14 +21,13 @@ const Search = ({history}) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     refInput.current.focus();
   }, [showSearch]);
 
   const searchMovie = e => {
     e.preventDefault();
     if(!input) return;
-    getQuery(input);
     history.push(`/search/${input}`);
     setInput('');
   };

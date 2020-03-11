@@ -1,38 +1,73 @@
 import React, { useContext, useEffect } from 'react';
-import { ContextMovies } from '../context/MoviesContext';
 import Container from '../containers/Container';
+import { ContextMovies } from '../context/MoviesContext';
+import { Link } from 'react-router-dom';
 
-const DetailMovie = type => {
-  const { current} = useContext(ContextMovies);
+const DetailMovie = ({ match }) => {
+  const { detailMovie, movie, loading } = useContext(ContextMovies);
 
-  const [movie, setMovie] = React.useState([]);
-
+  const { id } = match.params;
   useEffect(() => {
-    const fetchApi = async () => {
-      if (!current) return;
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${current}?api_key=bf7a0d7e84fbc649f8d6f2819491a0d6&language=en-US`
-      );
-      const data = await response.json();
-
-      if (response.status !== 200) return;
-      setMovie(data);
-    };
-
-    fetchApi();
-  }, [current]);
+    if (!id) return;
+    detailMovie(id);
+  }, [id]);
 
   return (
     <Container>
+      {loading && 'Loading...'}
       <section className="wrapper__movie">
-        <img
-          src={current ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : ''}
-          alt={movie.title}
-        />
-        <article>
-          <h1>{movie.title}</h1>
-          <p>{movie.overview}</p>
-          <button>Trailer</button>
+        <div className="movie-left">
+          <img
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                : `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+            }
+            alt={movie.title}
+          />
+        </div>
+        <article className="movie__right">
+          <h1 className="movie__right--title">{movie.title}</h1>
+          <h2 className="movie__right--subtitle">{movie.tagline}</h2>
+          <section className="movie__right--info">
+            <section className="stars">
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <i className="far fa-star"></i>
+              <small>{movie.vote_average}</small>
+            </section>
+            <span>
+              {movie.original_language} / {movie.runtime} min. / {movie.release_date}
+            </span>
+          </section>
+
+          <div className="movie__right--genres">
+            <h3>The Genres</h3>
+            <ul>
+              {movie.genres ? movie.genres.map(genre => (
+               <Link to={`/genres/${genre.id}`}>
+                 <li key={genre.id}><i className="fas fa-genderless"></i> {genre.name}</li>
+               </Link>
+              )) : ''}
+            </ul>
+          </div>
+
+          <section className="movie__right--desc">
+            <h3>The Synopsis</h3>
+            <p>{movie.overview}</p>
+          </section>
+
+          <section className="movie__right--cast">
+            <h3>The Cast</h3>
+          </section>
+          
+          <section className="movie__right--btns">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="btn btn-imdb">imdb <i className="fab fa-imdb"></i></a>
+            <a href={movie.homepage} target="_blank" rel="noopener noreferrer" className="btn btn-homepage">web site <i className="fas fa-link"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="btn btn-trailer">Trailer <i className="fab fa-youtube"></i></a>
+          </section>
         </article>
       </section>
     </Container>

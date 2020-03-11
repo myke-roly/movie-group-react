@@ -1,23 +1,132 @@
 .wrapper__movie {
+  padding: 0.5rem;
   display: grid;
-  position: relative;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-content: space-around;
+  align-items: center;
 
-  img {
-    width: 100%;
-    min-height: 15rem;
+  .btn {
+    padding: .5rem 1.5rem;
+    background: $dark-color;
+    color: $light-color;
+    border: 1.5px solid $dark-color;
+    border-radius: 50px;
+    transition: opacity .5s ease;
+
+    &:hover {
+      color: $default-color;
+      opacity: .9;
+    }
+  }
+
+  .movie-left {
+    width: 75%;
+    margin: auto;
+    text-align: center;
+
+    img {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }
   
-  article {
-    width: 80%;
-    // height: 80%;
-    margin: auto;
-    border-radius: 10px;
-    position: absolute;
-    background: #1d1c1ce5;
-    padding: 2rem 3rem;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+  .movie__right {
+    width: 100%;
+
+    &--title {
+      font-size: 2.5em;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+    }
+    
+    &--subtitle {
+      margin: 1rem 0;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: $default-color;
+      text-transform: uppercase;
+    }
+
+    &--info {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+
+      i { 
+        margin-right: .5rem;
+        color: $default-color;
+      }
+
+      span {
+        opacity: .4;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+    }
+
+    &--genres {
+      margin: 2rem 0;
+
+      ul {
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+
+        a li {
+          margin-right: 1.5rem;
+          font-weight: bold;
+          font-size: 12px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: $dark-color;
+          transition: transform .5s ease;
+          opacity: .5;
+
+          &:hover {
+            transform: scaleX(1.1);
+          }
+        }
+      }
+    }
+
+    &--desc {
+      margin: 2rem 0;
+
+      p {
+        margin: 1rem 0;
+        font-size: 15px;
+        letter-spacing: .7px;
+        line-height: 1.6;
+        opacity: .5;
+      }
+    }
+
+    &--cast {
+      margin: 2rem 0;
+    }
+
+    &--btns {
+      margin: 2rem 0;
+
+      a {
+        margin-right: 1rem;
+        font-size: 10px;
+        text-transform: uppercase;
+        
+        i {
+          // color: $default-color;
+          font-size: 10px;
+          margin-left: 5px;
+        }
+      }
+    }
   }
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
 }

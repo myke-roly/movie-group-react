@@ -4,26 +4,26 @@ import ListMovie from './ListMovie';
 import { ContextMovies } from '../context/MoviesContext';
 import { ContextCategories } from '../context/CategoriesContext';
 
-const Genres = () => {
+const Genres = ({match}) => {
   const contextMovies = useContext(ContextMovies);
   const contextCategories = useContext(ContextCategories);
 
-  const { moviesGenres, genre, loading, error, movies, page } = contextMovies;
+  const { moviesGenres, loading, error, movies, page } = contextMovies;
   const { genres } = contextCategories;
-
+  
+  const { id } = match.params;
   useEffect(() => {
-    moviesGenres(genre, page);
-  }, [genre, page]);
-
-  let subtitle = genres.find(g => g.id === genre);
-
+    moviesGenres(id, page);
+  }, [id, page]);
+  
+  let genre = genres.find(g => g.id === parseInt(id));
   return (
     <ListMovie
       movies={movies}
       loading={loading}
       error={error}
       title="Genres"
-      subtitle={genre ? subtitle.name : ''}
+      subtitle={genre ? genre.name : ''}
     />
   );
 };

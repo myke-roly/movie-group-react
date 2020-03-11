@@ -33,7 +33,9 @@ a {
 /*** Global buttons */
 .btn {
   background: none;
-  border: none;
   cursor: pointer;
+  color: $dark-color;
+  border: none;
+  font-size: 14px;
   box-shadow: -5px 5px 5px rgba(0, 0, 0 , .4);
 }

@@ -4,21 +4,22 @@ import React, { useContext, useEffect } from 'react';
 import { ContextMovies } from '../context/MoviesContext';
 import ListMovie from './ListMovie';
 
-const SearchMovie = () => {
+const SearchMovie = ({ match }) => {
   const contextSearch = useContext(ContextMovies);
-  const { searchMovies, movies, loading, error, query, page } = contextSearch;
+  const { searchMovies, movies, loading, error} = contextSearch;
 
+  const { id } = match.params;
   useEffect(() => {
-    searchMovies(query, page);
-  }, [query, page]);
+    searchMovies(id);
+  }, [id]);
 
   return (
     <ListMovie
       movies={movies}
       loading={loading}
       error={error}
-      title="Search Movie"
-      subtitle={query}
+      title="Search Movies"
+      subtitle={id}
     />
   );
 };

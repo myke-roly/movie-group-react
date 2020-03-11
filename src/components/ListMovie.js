@@ -4,6 +4,7 @@ import Container from '../containers/Container';
 import Pagination from '../containers/Pagination';
 
 const ListMovie = ({ movies, loading, error, title, subtitle }) => {
+
   return (
     <Container title={title} subtitle={subtitle}>
       {loading && 'Loading...'}

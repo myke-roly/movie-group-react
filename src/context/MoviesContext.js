@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import API from '../api/tmdbApi';
 import useMovies from '../reducers/useMovies';
 import * as TYPES from '../types/types';
@@ -7,26 +7,24 @@ export const ContextMovies = React.createContext();
 ContextMovies.displayName = 'ContextMovies';
 
 const MoviesContext = props => {
-  
+
   const initialState = {
     loading: true,
     error: null,
     movies: [],
+    movie: {},
     page: 1
   };
   
-  const [current, setCurrent] = useState('');
-  const [genre, setGenre] = useState('');
-  const [query, setQuery] = useState('')
   const [state, dispatch] = useReducer(useMovies, initialState);
 
-  const moviesDiscover = async () => {
+  const dicoverMovies = async () => {
     const response = await API('/discover/movie', { page: state.page});
     console.log(response);
     dispatch({type: TYPES.SHOW_LIST_MOVIES, payload: response.data.results});
   }
 
-  const moviesGenres = async (genre) => {
+  const genresMovies = async (genre) => {
     if(!genre) return;
     const response = await API('/discover/movie', {with_genres: genre, page: state.page});
     console.log(response);
@@ -37,7 +35,13 @@ const MoviesContext = props => {
     if(!query) return;
     const response = await API('/search/movie', {query: query, page: state.page});
     console.log(response);
-    dispatch({type: TYPES.SHOW_SEARCH_MOVIE, payload: response.data.results});
+    dispatch({type: TYPES.SHOW_SEARCH_MOVIES, payload: response.data.results});
+  }
+
+  const detailMovie = async (current) => {
+    const response = await API(`/movie/${current}`);
+    console.log(response.data);
+    dispatch({type: TYPES.SHOW_MOVIE, payload: response.data});
   }
 
   const nextPage = () => dispatch({type: TYPES.SHOW_NEXT_PAGE});
@@ -49,19 +53,14 @@ const MoviesContext = props => {
         loading: state.loading,
         error: state.error,
         page: state.page,
-        current: current,
-        genre: genre,
-        query: query,
         movies: state.movies,
-        nextPage: nextPage,
-        prevPage: prevPage,
-        moviesDiscover: moviesDiscover,
-        moviesGenres: moviesGenres,
+        movie: state.movie,
+        moviesDiscover: dicoverMovies,
+        moviesGenres: genresMovies,
         searchMovies: searchMovies,
-        getCurrent: id => setCurrent(id),
-        getQuery: query => setQuery(query),
-        getGenre: genre => setGenre(genre)
-
+        detailMovie: detailMovie,
+        nextPage: nextPage,
+        prevPage: prevPage
       }}
     >
       {props.children}
