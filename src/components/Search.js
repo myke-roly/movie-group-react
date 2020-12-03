@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const Search = ({history}) => {
-
+const Search = () => {
+  const history = useHistory();
   const [input, setInput] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const refInput = useRef();
@@ -14,7 +14,7 @@ const Search = ({history}) => {
     return () => document.removeEventListener('mousedow', handleClick);
   }, []);
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (node.current) {
       if (node.current.contains(e.target)) return;
       setShowSearch(false);
@@ -25,29 +25,19 @@ const Search = ({history}) => {
     refInput.current.focus();
   }, [showSearch]);
 
-  const searchMovie = e => {
+  const searchMovie = (e) => {
     e.preventDefault();
-    if(!input) return;
+    if (!input) return;
     history.push(`/search/${input}`);
     setInput('');
   };
 
   return (
-    <form className="search" onSubmit={searchMovie} ref={node}>
-      <button className="btn search__button" onClick={() => setShowSearch(true)}>
-        <i className="fas fa-search"></i>
-      </button>
-      <section className={`${ !showSearch ? 'search__input' : 'search__input search__input--show' }`}>
-        <input
-          type="text"
-          placeholder="Search Movie..."
-          value={input}
-          ref={refInput}
-          onChange={e => setInput(e.target.value)}
-        />
-      </section>
-    </form>
+    <div className="search" onSubmit={searchMovie} ref={node}>
+      <i className="fas fa-search"></i>
+      <input type="text" placeholder="Search Movie..." value={input} ref={refInput} onChange={(e) => setInput(e.target.value)} />
+    </div>
   );
 };
 
-export default withRouter(Search);
+export default Search;

@@ -8,16 +8,9 @@ const Discover = () => {
 
   useEffect(() => {
     moviesDiscover(page);
-  }, [page]);
+  }, [page]); //eslint-disable-line
 
-  return (
-    <ListMovie
-      movies={movies}
-      loading={loading}
-      error={error}
-      title="Discover Movies"
-    />
-  );
+  return <ListMovie movies={movies} loading={loading} error={error} title="Discover Movies" />;
 };
 
 export default Discover;

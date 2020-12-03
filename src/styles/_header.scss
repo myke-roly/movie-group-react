@@ -1,14 +1,10 @@
 .header {
-  margin: 1rem 0;
-
-  @media (max-width: 600px) {
-    display: block;
-    text-align: center;
-
-    h2 {
-      display: block;
-    }
-  }
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $default-color;
 
   &__burguer {
     display: none;

@@ -1,0 +1,12 @@
+.navbar {
+  a {
+    color: $dark-color;
+    padding-right: 1.5em;
+    font-size: 1em;
+    font-weight: bold;
+
+    &:hover {
+      color: $default-color;
+    }
+  }
+}

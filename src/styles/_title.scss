@@ -1,19 +1,18 @@
 .title {
   color: $dark-color;
-  margin: 2em 0;
 
-  h1 {
-    color: $default-color;
-    font-size: .8em;
+  h2 {
+    color: #444444;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
     opacity: .5;
   }
   
-  h2 {
-    color: $dark-color;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-transform: uppercase;
-  }
+  // h2 {
+  //   color: $dark-color;
+  //   font-weight: bold;
+  //   font-size: 1.5em;
+  //   text-transform: uppercase;
+  // }
 }
