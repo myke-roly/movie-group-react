@@ -1,9 +1,32 @@
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+
   a {
     color: $dark-color;
     padding-right: 1.5em;
-    font-size: 1em;
     font-weight: bold;
+
+    &:hover {
+      color: $default-color;
+    }
+  }
+
+  &__menu--genres {
+    display: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+
+    @media (max-width: 480px) {
+      display: block;
+    }
 
     &:hover {
       color: $default-color;

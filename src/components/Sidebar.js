@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from 'utils/logo.svg';
 
 import { ContextCategories } from 'state/categories';
+import Title from './Title';
 
 const Sidebar = () => {
   const contextCategories = useContext(ContextCategories);
@@ -16,12 +17,8 @@ const Sidebar = () => {
           <img src={logo} alt="logo" />
         </Link>
         <br />
+        <Title subtitle="GENRES" />
         <section className="sidebar__genres">
-          <Link to="/series">
-            <small style={{ margin: '1rem 0 1rem 2rem' }}>
-              <i className="fas fa-video"></i> Series
-            </small>
-          </Link>
           {genres.map((genre) => (
             <Link to={`/genres/${genre.id}`} key={genre.id}>
               <div className="sidebar__genres--item">

@@ -6,7 +6,7 @@ const Series = () => {
   const contextSeries = useContext(ContextSeries);
   const { series } = contextSeries;
 
-  return <ListItems data={series} title="Discover" subtitle="Series" />;
+  return <ListItems data={series} title="Discover Series" />;
 };
 
 export default Series;

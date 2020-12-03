@@ -62,8 +62,6 @@ const useMovies = (state, action) => {
         movie: action.payload,
         loading: false,
       };
-    case TYPES.SHOW_ERROR:
-      return { ...state, error: 'Not movies' };
     case TYPES.SHOW_NEXT_PAGE:
       return { ...state, page: state.page + 1 };
     case TYPES.SHOW_PREV_PAGE:

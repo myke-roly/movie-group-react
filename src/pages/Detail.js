@@ -4,12 +4,12 @@ import { ContextMovies } from 'state/movies/';
 import { Link } from 'react-router-dom';
 
 const DetailMovie = ({ match }) => {
-  const { detailMovie, movie, loading } = useContext(ContextMovies);
+  const { getDetailMovie, movie, loading } = useContext(ContextMovies);
 
   const { id } = match.params;
   useEffect(() => {
     if (!id) return;
-    detailMovie(id);
+    getDetailMovie(id);
   }, [id]); //eslint-disable-line
 
   return (
