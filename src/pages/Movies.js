@@ -4,13 +4,17 @@ import { ContextMovies } from 'state/movies';
 
 const Movies = () => {
   const contextMovies = useContext(ContextMovies);
-  const { movies, moviesDiscover, loading, error, page } = contextMovies;
+  const {
+    movies: { data, loading, error },
+    getDicoverMovies,
+    page,
+  } = contextMovies;
 
   useEffect(() => {
-    moviesDiscover(page);
+    getDicoverMovies(page);
   }, [page]); //eslint-disable-line
 
-  return <ListItems data={movies} loading={loading} error={error} title="Discover Movies" />;
+  return <ListItems data={data} loading={loading} error={error} title="Discover Movies" />;
 };
 
 export default Movies;

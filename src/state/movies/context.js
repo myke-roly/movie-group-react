@@ -10,12 +10,12 @@ const MoviesContext = (props) => {
   const initialState = {
     loading: false,
     error: null,
-    data: [],
+    data: null,
   };
 
   const states = {
     movies: initialState,
-    moviesByGenres: initialState,
+    moviesByGenre: initialState,
     searchMovies: initialState,
     movie: initialState,
     page: 1,
@@ -59,7 +59,7 @@ const MoviesContext = (props) => {
       value={{
         page: state.page,
         movies: state.movies,
-        moviesByGenres: state.moviesByGenres,
+        moviesByGenre: state.moviesByGenre,
         searchMovies: state.searchMovies,
         movie: state.movie,
         getDetailMovie,

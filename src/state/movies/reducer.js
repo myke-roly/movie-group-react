@@ -6,7 +6,7 @@ const useMovies = (state, action) => {
       return {
         ...state,
         movies: {
-          data: [],
+          data: null,
           loading: true,
           error: null,
         },
@@ -23,8 +23,8 @@ const useMovies = (state, action) => {
     case TYPES.REQUEST_GENRES_MOVIES:
       return {
         ...state,
-        moviesByGenres: {
-          data: [],
+        moviesByGenre: {
+          data: null,
           loading: true,
           error: null,
         },
@@ -32,8 +32,8 @@ const useMovies = (state, action) => {
     case TYPES.SHOW_GENRES_MOVIES:
       return {
         ...state,
-        moviesByGenres: {
-          movies: action.payload,
+        moviesByGenre: {
+          data: action.payload,
           loading: false,
           error: null,
         },
@@ -42,7 +42,7 @@ const useMovies = (state, action) => {
       return {
         ...state,
         searchMovies: {
-          data: [],
+          data: null,
           loading: true,
           error: null,
         },

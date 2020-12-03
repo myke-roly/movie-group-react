@@ -9,17 +9,23 @@ const Genres = ({ match }) => {
   const contextMovies = useContext(ContextMovies);
   const contextCategories = useContext(ContextCategories);
 
-  const { moviesGenres, loading, error, movies, page } = contextMovies;
+  const { getMoviesByGenre, moviesByGenre, page } = contextMovies;
   const { genres } = contextCategories;
 
   const { id } = match.params;
   useEffect(() => {
-    moviesGenres(id, page);
+    getMoviesByGenre(id, page);
   }, [id, page]); //eslint-disable-line
 
   let genre = genres.find((g) => g.id === parseInt(id));
   return (
-    <ListItems data={movies} loading={loading} error={error} title="Genres Movies" subtitle={genre ? genre.name : ''} />
+    <ListItems
+      data={moviesByGenre.data}
+      loading={moviesByGenre.loading}
+      error={moviesByGenre.error}
+      title="Genres Movies"
+      subtitle={genre ? genre.name : ''}
+    />
   );
 };
 
