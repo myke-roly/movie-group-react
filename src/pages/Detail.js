@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import Container from '../containers/Container';
-import { ContextMovies } from '../context/MoviesContext';
+import Container from 'containers/Container';
+import { ContextMovies } from 'state/movies/';
 import { Link } from 'react-router-dom';
 
 const DetailMovie = ({ match }) => {

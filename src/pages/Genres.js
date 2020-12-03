@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import ListItems from '../components/ListItems';
+import ListItems from 'components/ListItems';
 
-// import { ContextGenres } from '../context/GenresContext';
-import { ContextMovies } from '../context/MoviesContext';
-import { ContextCategories } from '../context/CategoriesContext';
+// import { ContextGenres } from 'context/GenresContext';
+import { ContextMovies } from 'state/movies';
+import { ContextCategories } from 'state/categories';
 
 const Genres = ({ match }) => {
   const contextMovies = useContext(ContextMovies);

@@ -4,7 +4,6 @@ import imgNotFound from '../utils/not-found.jpg';
 
 const Item = ({ item }) => {
   const { title, poster_path, id } = item;
-  console.log(item);
   return (
     <Link to={`/detail/${id}`}>
       <section className="wrapper__movies-item">

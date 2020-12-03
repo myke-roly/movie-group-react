@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 
-// import { ContextSearch } from '../context/SearchContext';
-import { ContextMovies } from '../context/MoviesContext';
-import ListItems from '../components/ListItems';
+// import { ContextSearch } from 'context/SearchContext';
+import { ContextMovies } from 'state/movies';
+import ListItems from 'components/ListItems';
 
 const Search = ({ match }) => {
   const contextSearch = useContext(ContextMovies);

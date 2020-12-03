@@ -1,9 +1,9 @@
-import React, { useReducer } from 'react';
-import API from '../api/tmdbApi';
+import React, { useReducer, createContext } from 'react';
+import API from 'api/tmdbApi';
 import useMovies from './reducer';
 import * as TYPES from '../types';
 
-export const ContextMovies = React.createContext();
+export const ContextMovies = createContext();
 ContextMovies.displayName = 'ContextMovies';
 
 const MoviesContext = (props) => {

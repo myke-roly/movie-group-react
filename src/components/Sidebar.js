@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../utils/logo.svg';
+import logo from 'utils/logo.svg';
 
-import { ContextCategories } from '../context/CategoriesContext';
+import { ContextCategories } from 'state/categories';
 
-const Sidebar = ({ mobieMode }) => {
-  console.log(mobieMode);
+const Sidebar = () => {
   const contextCategories = useContext(ContextCategories);
 
   const { genres } = contextCategories;

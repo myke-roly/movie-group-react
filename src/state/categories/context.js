@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
+import API from 'api/tmdbApi';
 
-export const ContextCategories = React.createContext();
+export const ContextCategories = createContext();
 
-const CategoriesContext = (props) => {
+const CategoriesContext = ({ children }) => {
   const [genres, setGenres] = useState([]);
+  const url = '/genre/movie/list?api_key=bf7a0d7e84fbc649f8d6f2819491a0d6&language=en-US';
 
   useEffect(() => {
-    const fetchApi = async () => {
-      const response = await fetch(
-        'https://api.themoviedb.org/3/genre/movie/list?api_key=bf7a0d7e84fbc649f8d6f2819491a0d6&language=en-US'
-      );
-      const data = await response.json();
-      setGenres(data.genres);
-    };
-
-    fetchApi();
+    API(url).then((res) => {
+      setGenres(res.data.genres);
+    });
   }, []);
 
-  return <ContextCategories.Provider value={{ genres: genres }}>{props.children}</ContextCategories.Provider>;
+  return <ContextCategories.Provider value={{ genres }}>{children}</ContextCategories.Provider>;
 };
 
 export default CategoriesContext;

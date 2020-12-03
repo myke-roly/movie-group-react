@@ -10,9 +10,7 @@ import Genres from './pages/Genres';
 import NotFound from './containers/NotFound';
 
 //Context
-import MoviesContext from './context/MoviesContext';
-import CategoriesContext from './context/CategoriesContext';
-import SeriesContext from './context/SeriesContext';
+import { MoviesContext, SeriesContext, CategoriesContext } from 'state';
 
 // react-ga
 // ReactGA.initialize('UA-137885307-1');

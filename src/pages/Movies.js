@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import ListItems from '../components/ListItems';
-import { ContextMovies } from '../context/MoviesContext';
+import ListItems from 'components/ListItems';
+import { ContextMovies } from 'state/movies';
 
 const Movies = () => {
   const contextMovies = useContext(ContextMovies);
