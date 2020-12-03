@@ -1,0 +1,25 @@
+.search {
+  background: $dark-color;
+  border-radius: 4px;
+  width: 350px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 0 7px rgba(0,0,0,.7);
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+
+  i {
+    color: $default-color;
+  }
+
+  input {
+    padding-left: .7rem;
+    border: none;
+    background: transparent;
+    color: $light-color;
+    font-size: 1.1em;
+    letter-spacing: .5px;
+    outline: none;
+  }
+}

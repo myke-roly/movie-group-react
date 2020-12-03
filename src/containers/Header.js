@@ -1,14 +1,12 @@
 import React from 'react';
-import Search from '../components/Search';
-import Title from './Title';
-const Header = ({title, subtitle, changeModeMobile}) => {
-  return (
-    <header className="header">
-      <Search />
-      <Title title={title} subtitle={subtitle} />
-      <h2 className="header__burguer" onClick={changeModeMobile}>Menu</h2>
-    </header>
-  );
-};
+import InputSearch from '../components/InputSearch';
+import Navbar from './Navbar';
+
+const Header = () => (
+  <header className="header">
+    <Navbar />
+    <InputSearch />
+  </header>
+);
 
 export default Header;

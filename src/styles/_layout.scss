@@ -1,8 +1,8 @@
 .layout {
   display: grid;
-  grid-template-columns: 1fr 250px;
+  grid-template-columns: 1fr 222px;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 720px) {
     display: block;
   }
 
