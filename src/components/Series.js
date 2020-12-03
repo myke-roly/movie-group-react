@@ -1,16 +1,12 @@
 import React, { useContext } from 'react';
-import ListMovies from './ListMovie';
+import ListItems from './ListItems';
 import { ContextSeries } from '../context/SeriesContext';
 
 const Series = () => {
-
   const contextSeries = useContext(ContextSeries);
-  const {series} = contextSeries;
-  console.log(series);
+  const { series } = contextSeries;
 
-  return (
-    <ListMovies movies={series} title="Discover" subtitle="Series" />
-  );
+  return <ListItems data={series} title="Discover" subtitle="Series" />;
 };
 
 export default Series;

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 
 // import { ContextSearch } from '../context/SearchContext';
 import { ContextMovies } from '../context/MoviesContext';
-import ListMovie from './ListMovie';
+import ListItems from './ListItems';
 
 const SearchMovie = ({ match }) => {
   const contextSearch = useContext(ContextMovies);
@@ -13,7 +13,7 @@ const SearchMovie = ({ match }) => {
     searchMovies(id);
   }, [id]); //eslint-disable-line
 
-  return <ListMovie movies={movies} loading={loading} error={error} title="Search Movies" subtitle={id} />;
+  return <ListItems data={movies} loading={loading} error={error} title="Search Movies" subtitle={id} />;
 };
 
 export default SearchMovie;

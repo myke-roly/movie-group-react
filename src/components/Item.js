@@ -2,14 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import imgNotFound from '../utils/not-found.jpg';
 
-const Movie = ({ title, url, id }) => {
+const Item = ({ item }) => {
+  const { title, poster_path, id } = item;
+  console.log(item);
   return (
     <Link to={`/detail-movie/${id}`}>
       <section className="wrapper__movies-item">
-        <img
-          src={url ? `https://image.tmdb.org/t/p/original/${url}` : imgNotFound}
-          alt={title}
-        />
+        <img src={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : imgNotFound} alt={title} />
         <h2>{title} </h2>
         <section className="stars">
           <i className="far fa-star"></i>
@@ -25,4 +24,4 @@ const Movie = ({ title, url, id }) => {
   );
 };
 
-export default Movie;
+export default Item;

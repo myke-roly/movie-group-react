@@ -1,22 +1,16 @@
 import React from 'react';
-import Movie from './Movie';
+import Item from './Item';
 import Container from '../containers/Container';
 import Pagination from '../containers/Pagination';
 
-const ListMovie = ({ movies, loading, error, title, subtitle }) => {
-
+const ListItems = ({ data, loading, error, title, subtitle }) => {
   return (
     <Container title={title} subtitle={subtitle}>
       {loading && 'Loading...'}
       {error && error}
       <div className="wrapper__movies">
-        {movies.map(movie => (
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            url={movie.poster_path}
-          />
+        {data.map((item) => (
+          <Item key={item.id} item={item} />
         ))}
       </div>
       <Pagination />
@@ -24,4 +18,4 @@ const ListMovie = ({ movies, loading, error, title, subtitle }) => {
   );
 };
 
-export default ListMovie;
+export default ListItems;

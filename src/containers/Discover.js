@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import ListMovie from '../components/ListMovie';
+import ListItems from '../components/ListItems';
 import { ContextMovies } from '../context/MoviesContext';
 
 const Discover = () => {
@@ -10,7 +10,7 @@ const Discover = () => {
     moviesDiscover(page);
   }, [page]); //eslint-disable-line
 
-  return <ListMovie movies={movies} loading={loading} error={error} title="Discover Movies" />;
+  return <ListItems data={movies} loading={loading} error={error} title="Discover Movies" />;
 };
 
 export default Discover;
