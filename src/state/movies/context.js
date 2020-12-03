@@ -16,20 +16,21 @@ const MoviesContext = (props) => {
   const states = {
     movies: initialState,
     moviesByGenres: initialState,
+    searchMovies: initialState,
     movie: initialState,
     page: 1,
   };
 
   const [state, dispatch] = useReducer(useMovies, states);
 
-  const dicoverMovies = async () => {
+  const getDicoverMovies = async () => {
     dispatch({ type: TYPES.REQUEST_LIST_MOVIES });
 
     const response = await API('/discover/movie', { page: state.page });
     dispatch({ type: TYPES.SHOW_LIST_MOVIES, payload: response.data.results });
   };
 
-  const genresMovies = async (genre) => {
+  const getMoviesByGenre = async (genre) => {
     if (!genre) return;
     dispatch({ type: TYPES.REQUEST_GENRES_MOVIES });
 
@@ -37,7 +38,7 @@ const MoviesContext = (props) => {
     dispatch({ type: TYPES.SHOW_GENRES_MOVIES, payload: response.data.results });
   };
 
-  const searchMovies = async (query) => {
+  const getSearchMovies = async (query) => {
     dispatch({ type: TYPES.REQUEST_SEARCH_MOVIES });
 
     if (!query) return;
@@ -45,7 +46,7 @@ const MoviesContext = (props) => {
     dispatch({ type: TYPES.SHOW_SEARCH_MOVIES, payload: response.data.results });
   };
 
-  const detailMovie = async (current) => {
+  const getDetailMovie = async (current) => {
     const response = await API(`/movie/${current}`);
     dispatch({ type: TYPES.SHOW_MOVIE, payload: response.data });
   };
@@ -56,17 +57,17 @@ const MoviesContext = (props) => {
   return (
     <ContextMovies.Provider
       value={{
-        loading: state.loading,
-        error: state.error,
         page: state.page,
         movies: state.movies,
+        moviesByGenres: state.moviesByGenres,
+        searchMovies: state.searchMovies,
         movie: state.movie,
-        moviesDiscover: dicoverMovies,
-        moviesGenres: genresMovies,
-        searchMovies: searchMovies,
-        detailMovie: detailMovie,
-        nextPage: nextPage,
-        prevPage: prevPage,
+        getDetailMovie,
+        getDicoverMovies,
+        getMoviesByGenre,
+        getSearchMovies,
+        nextPage,
+        prevPage,
       }}
     >
       {props.children}
