@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import ListItems from './ListItems';
+import ListItems from '../components/ListItems';
+
 // import { ContextGenres } from '../context/GenresContext';
 import { ContextMovies } from '../context/MoviesContext';
 import { ContextCategories } from '../context/CategoriesContext';
@@ -17,7 +18,9 @@ const Genres = ({ match }) => {
   }, [id, page]); //eslint-disable-line
 
   let genre = genres.find((g) => g.id === parseInt(id));
-  return <ListItems data={movies} loading={loading} error={error} title="Genres Movies" subtitle={genre ? genre.name : ''} />;
+  return (
+    <ListItems data={movies} loading={loading} error={error} title="Genres Movies" subtitle={genre ? genre.name : ''} />
+  );
 };
 
 export default Genres;

@@ -6,7 +6,7 @@ const Item = ({ item }) => {
   const { title, poster_path, id } = item;
   console.log(item);
   return (
-    <Link to={`/detail-movie/${id}`}>
+    <Link to={`/detail/${id}`}>
       <section className="wrapper__movies-item">
         <img src={poster_path ? `https://image.tmdb.org/t/p/original/${poster_path}` : imgNotFound} alt={title} />
         <h2>{title} </h2>

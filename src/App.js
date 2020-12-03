@@ -2,15 +2,16 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from './history';
 
-import Discover from './containers/Discover';
-import DetailMovie from './components/DetailMovie';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
+import Detail from './pages/Detail';
+import Search from './pages/Search';
+import Genres from './pages/Genres';
 import NotFound from './containers/NotFound';
-import SearchMovie from './components/SearchMovie';
-import Genres from './components/Genres';
+
 //Context
 import MoviesContext from './context/MoviesContext';
 import CategoriesContext from './context/CategoriesContext';
-import Series from './components/Series';
 import SeriesContext from './context/SeriesContext';
 
 // react-ga
@@ -24,12 +25,12 @@ const App = () => {
         <SeriesContext>
           <CategoriesContext>
             <Switch>
-              <Route path="/" exact component={Discover} />
-              <Route path="/detail-movie/:id" component={DetailMovie} />
-              <Route path="/search/:id" component={SearchMovie} />
-              <Route path="/genres/:id" component={Genres} />
+              <Route path="/" exact component={Movies} />
               <Route path="/series" component={Series} />
-              <Route path="/404" component={() => <NotFound />} />
+              <Route path="/detail/:id" component={Detail} />
+              <Route path="/search/:id" component={Search} />
+              <Route path="/genres/:id" component={Genres} />
+              <Route path="*" component={() => <NotFound />} />
             </Switch>
           </CategoriesContext>
         </SeriesContext>

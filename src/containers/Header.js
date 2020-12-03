@@ -1,14 +1,12 @@
 import React from 'react';
-import Search from '../components/Search';
+import InputSearch from '../components/InputSearch';
 import Navbar from './Navbar';
 
-const Header = ({ title, subtitle }) => {
-  return (
-    <header className="header">
-      <Navbar />
-      <Search />
-    </header>
-  );
-};
+const Header = () => (
+  <header className="header">
+    <Navbar />
+    <InputSearch />
+  </header>
+);
 
 export default Header;

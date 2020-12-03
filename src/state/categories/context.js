@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export const ContextCategories = React.createContext();
 
-const CategoriesContext = props => {
+const CategoriesContext = (props) => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -17,11 +17,7 @@ const CategoriesContext = props => {
     fetchApi();
   }, []);
 
-  return (
-    <ContextCategories.Provider value={{ genres: genres }}>
-      {props.children}
-    </ContextCategories.Provider>
-  );
+  return <ContextCategories.Provider value={{ genres: genres }}>{props.children}</ContextCategories.Provider>;
 };
 
 export default CategoriesContext;

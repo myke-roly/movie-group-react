@@ -18,7 +18,11 @@ const DetailMovie = ({ match }) => {
       <section className="wrapper__movie">
         <div className="movie-left">
           <img
-            src={movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                : `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+            }
             alt={movie.title}
           />
         </div>

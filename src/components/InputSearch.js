@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Search = () => {
+const InputSearch = () => {
   const history = useHistory();
   const [input, setInput] = useState('');
 
@@ -28,4 +28,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default InputSearch;
