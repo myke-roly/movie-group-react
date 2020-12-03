@@ -2,23 +2,59 @@ import * as TYPES from '../types';
 
 const useMovies = (state, action) => {
   switch (action.type) {
+    case TYPES.REQUEST_LIST_MOVIES:
+      return {
+        ...state,
+        movies: {
+          data: [],
+          loading: true,
+          error: null,
+        },
+      };
     case TYPES.SHOW_LIST_MOVIES:
       return {
         ...state,
-        movies: action.payload,
-        loading: false,
+        movies: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+    case TYPES.REQUEST_GENRES_MOVIES:
+      return {
+        ...state,
+        moviesByGenres: {
+          data: [],
+          loading: true,
+          error: null,
+        },
       };
     case TYPES.SHOW_GENRES_MOVIES:
       return {
         ...state,
-        movies: action.payload,
-        loading: false,
+        moviesByGenres: {
+          movies: action.payload,
+          loading: false,
+          error: null,
+        },
+      };
+    case TYPES.REQUEST_SEARCH_MOVIES:
+      return {
+        ...state,
+        searchMovies: {
+          data: [],
+          loading: true,
+          error: null,
+        },
       };
     case TYPES.SHOW_SEARCH_MOVIES:
       return {
         ...state,
-        movies: action.payload,
-        loading: false,
+        searchMovies: {
+          data: action.payload,
+          loading: false,
+          error: null,
+        },
       };
     case TYPES.SHOW_MOVIE:
       return {
