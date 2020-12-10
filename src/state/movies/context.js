@@ -1,7 +1,7 @@
 import React, { useReducer, createContext } from 'react';
 import API from 'api/tmdbApi';
 import useMovies from './reducer';
-import * as TYPES from '../types';
+import * as TYPES from './types';
 
 export const ContextMovies = createContext();
 ContextMovies.displayName = 'ContextMovies';
@@ -17,7 +17,7 @@ const MoviesContext = (props) => {
     movies: initialState,
     moviesByGenre: initialState,
     searchMovies: initialState,
-    movie: initialState,
+    movieDetail: initialState,
     page: 1,
   };
 
@@ -47,8 +47,10 @@ const MoviesContext = (props) => {
   };
 
   const getDetailMovie = async (current) => {
+    dispatch({ type: TYPES.REQUEST_MOVIE_DETAIL });
+
     const response = await API(`/movie/${current}`);
-    dispatch({ type: TYPES.SHOW_MOVIE, payload: response.data });
+    dispatch({ type: TYPES.GET_MOVIE_DETAIL, payload: response.data });
   };
 
   const nextPage = () => dispatch({ type: TYPES.SHOW_NEXT_PAGE });
@@ -61,7 +63,7 @@ const MoviesContext = (props) => {
         movies: state.movies,
         moviesByGenre: state.moviesByGenre,
         searchMovies: state.searchMovies,
-        movie: state.movie,
+        movieDetail: state.movieDetail,
         getDetailMovie,
         getDicoverMovies,
         getMoviesByGenre,

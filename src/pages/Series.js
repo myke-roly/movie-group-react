@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ListItems from 'components/ListItems';
 import { ContextSeries } from 'state/series';
 
 const Series = () => {
-  const contextSeries = useContext(ContextSeries);
-  const { series } = contextSeries;
+  const { series, getSeries } = useContext(ContextSeries);
 
-  return <ListItems data={series} title="Discover Series" />;
+  useEffect(() => {
+    getSeries();
+  }, []); //eslint-disable-line
+
+  return <ListItems data={series.data} loading={series.loading} type="series" title="Discover Series" />;
 };
 
 export default Series;

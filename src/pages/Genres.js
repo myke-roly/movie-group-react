@@ -25,6 +25,7 @@ const Genres = ({ match }) => {
       error={moviesByGenre.error}
       title="Genres Movies"
       subtitle={genre ? genre.name : ''}
+      type="movies"
     />
   );
 };

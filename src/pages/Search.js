@@ -16,7 +16,7 @@ const Search = ({ match }) => {
     getSearchMovies(id);
   }, [id]); //eslint-disable-line
 
-  return <ListItems data={data} loading={loading} error={error} title="Search Movies" subtitle={id} />;
+  return <ListItems data={data} loading={loading} type="movies" error={error} title="Search Movies" subtitle={id} />;
 };
 
 export default Search;

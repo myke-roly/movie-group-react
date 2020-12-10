@@ -1,4 +1,4 @@
-import * as TYPES from '../types';
+import * as TYPES from './types';
 
 const useMovies = (state, action) => {
   switch (action.type) {
@@ -56,11 +56,21 @@ const useMovies = (state, action) => {
           error: null,
         },
       };
-    case TYPES.SHOW_MOVIE:
+    case TYPES.REQUEST_MOVIE_DETAIL:
       return {
         ...state,
-        movie: action.payload,
-        loading: false,
+        movieDetail: {
+          data: null,
+          loading: true,
+        },
+      };
+    case TYPES.GET_MOVIE_DETAIL:
+      return {
+        ...state,
+        movieDetail: {
+          data: action.payload,
+          loading: false,
+        },
       };
     case TYPES.SHOW_NEXT_PAGE:
       return { ...state, page: state.page + 1 };
