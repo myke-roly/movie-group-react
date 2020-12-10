@@ -1,7 +1,7 @@
 import React, { useReducer, createContext } from 'react';
 import API from 'api/tmdbApi';
 import useMovies from './reducer';
-import * as TYPES from '../types';
+import * as TYPES from './types';
 
 export const ContextMovies = createContext();
 ContextMovies.displayName = 'ContextMovies';
