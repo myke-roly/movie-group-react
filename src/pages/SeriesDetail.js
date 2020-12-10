@@ -3,19 +3,20 @@ import Container from 'containers/Container';
 import { ContextMovies } from 'state/movies/';
 import { Link } from 'react-router-dom';
 
-const DetailMovie = ({ match }) => {
-  const { getDetailMovie, movie, loading } = useContext(ContextMovies);
+const MoviesDetail = ({ match }) => {
+  // const { getDetailMovie, movie, loading } = useContext(ContextMovies);
 
   const { id } = match.params;
-  useEffect(() => {
-    if (!id) return;
-    getDetailMovie(id);
-  }, [id]); //eslint-disable-line
+  // useEffect(() => {
+  //   if (!id) return;
+  //   getDetailMovie(id);
+  // }, [id]); //eslint-disable-line
 
   return (
     <Container>
-      {loading && 'Loading...'}
-      <section className="wrapper__movie">
+      series {id}
+      {/* {loading && 'Loading...'} */}
+      {/* <section className="wrapper__movie">
         <div className="movie-left">
           <img
             src={
@@ -46,15 +47,13 @@ const DetailMovie = ({ match }) => {
           <div className="movie__right--genres">
             <h3>The Genres</h3>
             <ul>
-              {movie.genres
-                ? movie.genres.map((genre) => (
-                    <li key={genre.id}>
-                      <Link to={`/genres/${genre.id}`}>
-                        <i className="fas fa-genderless"></i> {genre.name}
-                      </Link>
-                    </li>
-                  ))
-                : ''}
+              {movie?.genres?.map((genre) => (
+                <li key={genre.id}>
+                  <Link to={`/genres/${genre.id}`}>
+                    <i className="fas fa-genderless"></i> {genre.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -79,9 +78,9 @@ const DetailMovie = ({ match }) => {
             </a>
           </section>
         </article>
-      </section>
+      </section> */}
     </Container>
   );
 };
 
-export default DetailMovie;
+export default MoviesDetail;

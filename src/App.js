@@ -4,7 +4,8 @@ import history from './history';
 
 import Movies from './pages/Movies';
 import Series from './pages/Series';
-import Detail from './pages/Detail';
+import MoviesDetail from './pages/MoviesDetail';
+import SeriesDetail from './pages/SeriesDetail';
 import Search from './pages/Search';
 import Genres from './pages/Genres';
 import NotFound from './containers/NotFound';
@@ -24,8 +25,9 @@ const App = () => {
           <CategoriesContext>
             <Switch>
               <Route path="/" exact component={Movies} />
-              <Route path="/series" component={Series} />
-              <Route path="/detail/:id" component={Detail} />
+              <Route path="/movies/detail/:id" component={MoviesDetail} />
+              <Route path="/series" exact component={Series} />
+              <Route path="/series/detail/:id" component={SeriesDetail} />
               <Route path="/search/:id" component={Search} />
               <Route path="/genres/:id" component={Genres} />
               <Route path="*" component={() => <NotFound />} />

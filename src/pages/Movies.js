@@ -14,7 +14,7 @@ const Movies = () => {
     getDicoverMovies(page);
   }, [page]); //eslint-disable-line
 
-  return <ListItems data={data} loading={loading} error={error} title="Discover Movies" />;
+  return <ListItems data={data} type="movies" loading={loading} error={error} title="Discover Movies" />;
 };
 
 export default Movies;
