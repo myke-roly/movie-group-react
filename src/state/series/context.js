@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 import API from 'api/tmdbApi';
 import * as types from './types';
 import { seriesReducer } from './reducer';

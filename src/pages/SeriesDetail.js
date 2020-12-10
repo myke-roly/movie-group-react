@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Container from 'containers/Container';
 import { Link } from 'react-router-dom';
 import { ContextSeries } from 'state/series';
+import LoaderSpinner from 'components/Loader';
 
 const MoviesDetail = ({ match }) => {
   const { getSeriesDetail, seriesDetail } = useContext(ContextSeries);
@@ -15,7 +16,7 @@ const MoviesDetail = ({ match }) => {
   console.log(seriesDetail);
   return (
     <Container>
-      {seriesDetail?.loading && 'Loading...'}
+      {seriesDetail.loading && <LoaderSpinner />}
       {seriesDetail?.data && (
         <section className="wrapper__movie">
           <div className="movie-left">
